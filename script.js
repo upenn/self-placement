@@ -227,14 +227,10 @@ function showNextQuestion(event, prev) {
 function saveData(e) {
     //const action = "https://script.google.com/macros/s/AKfycbxRVJ8KIzKBiNzI71b1L3cVv0idoR8lpec0Zpkk-mJJvTw18Nr_rlcB31Hc-2nk07Zyqg/exec"
 
+    // TODO edit this function so that it saves the data to our own thing
+
     e.preventDefault();
-    console.log(process.env.REMOTE_USER);
-    console.log(process.env.employeeNumber);
-    console.log(process.env.eppn);
-    console.log(process.env.mail);
-    console.log(process.env.displayName);
-    console.log(process.env.sn);
-    console.log(process.env.givenName);
     //const data = new FormData($('#main').get()[0]);
     //fetch(action, {method: 'POST', body: data,})
+    
 }
