@@ -4,13 +4,13 @@ $(document).ready(function() {
     $('input[name="previousCourse"]').change(checkPrevCourse);
     $('input[name="previousExp"]').change(checkPrevExp);
     $('select[name="lastCourse"]').change(checkLastCouse);
-    $('input[name="142Score"]').change(check142Grade);
+    // $('input[name="142Score"]').change(check142Grade);
     $('input[name="apScore"]').change(checkAPGrade);
     $('input[name="ibScore"]').change(checkIBGrade);
-    $('#topics-121').find('select').change(check121Topics);
-    $('#topics-122').find('select').change(check122Topics);
-    $('input[name^="p_121p"]').change(check121Problem);
-    $('input[name^="p_122p"]').change(check122Problem);
+    $('#topics-1100').find('select').change(check1100Topics);
+    // $('#topics-122').find('select').change(check122Topics);
+    $('input[name^="p_1100p"]').change(check1100Problem);
+    // $('input[name^="p_122p"]').change(check122Problem);
 });
 
 function checkPrevCourse(event) {
@@ -27,9 +27,9 @@ function checkPrevExp(event) {
     let resp = $('input[name="previousExp"]:checked').val();
     console.log(resp);
     if (resp == 'No') {
-        showQuestion(event, $(event.target), $('#result-121-noexp'));
+        showQuestion(event, $(event.target), $('#result-1100-noexp'));
     } else {
-        showQuestion(event, $(event.target), $('#topics-121'));
+        showQuestion(event, $(event.target), $('#topics-1100'));
     }
 }
 
@@ -40,9 +40,9 @@ function checkLastCouse(event) {
     let course = $('select[name="lastCourse"]').val();
     console.log(course);
     switch(course) {
-        case 'CSE142':
-            showQuestion(event, $(event.target), $('#142Score'));
-            break;
+        // case 'CSE142':
+        //     showQuestion(event, $(event.target), $('#142Score'));
+        //     break;
         case 'AP-A':
             showQuestion(event, $(event.target), $('#apScore'));
             break;
@@ -55,32 +55,32 @@ function checkLastCouse(event) {
         //     showQuestion(event, $(event.target), $('#result-adv'))
         //     break;
         default:
-            showQuestion(event, $(event.target), $('#topics-121'));
+            showQuestion(event, $(event.target), $('#topics-1100'));
             break;
     }
 }
 
-function check142Grade(event) {
-    $('input[name="apScore"]').prop("checked", false);
-    $('input[name="ibScore"]').prop("checked", false);
+// function check142Grade(event) {
+//     $('input[name="apScore"]').prop("checked", false);
+//     $('input[name="ibScore"]').prop("checked", false);
 
-    let grade = $('input[name="142Score"]:checked').val();
-    console.log(grade);
-    switch (grade) {
-        case '2':
-        case '3':
-        case 'S':
-        case 'X':
-            showQuestion(event, $(event.target), $('#topics-121'));
-            break;
-        default:
-            showQuestion(event, $(event.target), $('#result-adv'));
-            break;
-    }
-}
+//     let grade = $('input[name="142Score"]:checked').val();
+//     console.log(grade);
+//     switch (grade) {
+//         case '2':
+//         case '3':
+//         case 'S':
+//         case 'X':
+//             showQuestion(event, $(event.target), $('#topics-1100'));
+//             break;
+//         default:
+//             showQuestion(event, $(event.target), $('#result-adv'));
+//             break;
+//     }
+// }
 
 function checkAPGrade(event) {
-    $('input[name="142Score"]').prop("checked", false);
+    // $('input[name="142Score"]').prop("checked", false);
     $('input[name="ibScore"]').prop("checked", false);
 
     let grade = $('input[name="apScore"]:checked').val();
@@ -90,7 +90,7 @@ function checkAPGrade(event) {
         case '4':
         case '5':
         case 'X':
-            showQuestion(event, $(event.target), $('#topics-121'));
+            showQuestion(event, $(event.target), $('#topics-1100'));
             break;
         default:
             showQuestion(event, $(event.target), $('#result-adv'));
@@ -100,7 +100,7 @@ function checkAPGrade(event) {
 
 function checkIBGrade(event) {
     $('input[name="apScore"]').prop("checked", false);
-    $('input[name="142Score"]').prop("checked", false);
+    // $('input[name="142Score"]').prop("checked", false);
 
     let grade = $('input[name="ibScore"]:checked').val();
     console.log(grade);
@@ -110,7 +110,7 @@ function checkIBGrade(event) {
         case '6':
         case '7':
         case 'X':
-            showQuestion(event, $(event.target), $('#topics-121'));
+            showQuestion(event, $(event.target), $('#topics-1100'));
             break;
         default:
             showQuestion(event, $(event.target), $('#result-adv'));
@@ -118,45 +118,45 @@ function checkIBGrade(event) {
     }
 }
 
-function check121Topics(event) {
-    let topics = $('#topics-121').find('select');
+function check1100Topics(event) {
+    let topics = $('#topics-1100').find('select');
     console.log(topics);
 
     let responses = topics.get().map(x => $(x).val());
     if (responses.every(x => x >= 3)) {
         showNextQuestion(event, $(event.target));
     } else if (responses.every(x => x)) {
-        showQuestion(event, $(event.target), $('#result-121-topics'));
+        showQuestion(event, $(event.target), $('#result-1100-topics'));
     } else {
         showQuestion(event, $(event.target), null);
     }
 }
 
-function check122Topics(event) {
-    let topics = $('#topics-122').find('select');
-    console.log(topics);
+// function check122Topics(event) {
+//     let topics = $('#topics-122').find('select');
+//     console.log(topics);
 
-    let responses = topics.get().map(x => $(x).val());
-    if (responses.every(x => x >= 3)) {
-        showNextQuestion(event, $(event.target));
-        // showQuestion(event, $(event.target), $("#result-123"))
-    } else if (responses.every(x => x)) {
-        if ($('select[name="lastCourse"]').val() == 'CSE142') {
-            showQuestion(event, $(event.target), $('#result-122-from-142'));
-        } else {
-            showQuestion(event, $(event.target), $('#result-122'));
-        }
-    } else {
-        showQuestion(event, $(event.target), null);
-    }
-}
+//     let responses = topics.get().map(x => $(x).val());
+//     if (responses.every(x => x >= 3)) {
+//         showNextQuestion(event, $(event.target));
+//         // showQuestion(event, $(event.target), $("#result-123"))
+//     } else if (responses.every(x => x)) {
+//         if ($('select[name="lastCourse"]').val() == 'CSE142') {
+//             showQuestion(event, $(event.target), $('#result-122-from-142'));
+//         } else {
+//             showQuestion(event, $(event.target), $('#result-122'));
+//         }
+//     } else {
+//         showQuestion(event, $(event.target), null);
+//     }
+// }
 
-function check121Problem(event) {
+function check1100Problem(event) {
     let resp = $(event.target).filter(':checked').val();
     console.log(resp);
 
     if (resp <= 2) {
-        showQuestion(event, $(event.target), $('#result-121-topics'));
+        showQuestion(event, $(event.target), $('#result-1100-topics'));
     } else if (resp == 3) {
         showQuestion(event, $(event.target), $('#result-adv'));
     } else {
@@ -164,28 +164,28 @@ function check121Problem(event) {
     }
 }
 
-function check122Problem(event) {
-    let resp = $(event.target).filter(':checked').val();
-    console.log(resp);
+// function check122Problem(event) {
+//     let resp = $(event.target).filter(':checked').val();
+//     console.log(resp);
 
-    if (resp <= 2) {
-        if ($('select[name="lastCourse"]').val() == 'CSE142') {
-            showQuestion(event, $(event.target), $('#result-122-from-142'));
-        } else {
-            showQuestion(event, $(event.target), $('#result-122'));
-        }
-    } else if (resp == 3) {
-        showQuestion(event, $(event.target), $('#result-adv'));
-    } else if ($(event.target).attr('id').startsWith('p_122p3')) {
-        if ($('select[name="lastCourse"]').val() == 'CSE142') {
-            showQuestion(event, $(event.target), $('#result-123-from-142'));
-        } else {
-            showQuestion(event, $(event.target), $('#result-123'));
-        }
-    } else {
-        showNextQuestion(event, $(event.target));
-    }
-}
+//     if (resp <= 2) {
+//         if ($('select[name="lastCourse"]').val() == 'CSE142') {
+//             showQuestion(event, $(event.target), $('#result-122-from-142'));
+//         } else {
+//             showQuestion(event, $(event.target), $('#result-122'));
+//         }
+//     } else if (resp == 3) {
+//         showQuestion(event, $(event.target), $('#result-adv'));
+//     } else if ($(event.target).attr('id').startsWith('p_122p3')) {
+//         if ($('select[name="lastCourse"]').val() == 'CSE142') {
+//             showQuestion(event, $(event.target), $('#result-123-from-142'));
+//         } else {
+//             showQuestion(event, $(event.target), $('#result-123'));
+//         }
+//     } else {
+//         showNextQuestion(event, $(event.target));
+//     }
+// }
 
 function showQuestion(event, prev, target) {
     // hide all later questions
