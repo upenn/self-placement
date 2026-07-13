@@ -142,9 +142,9 @@ function check1100Topics(event) {
 //         // showQuestion(event, $(event.target), $("#result-123"))
 //     } else if (responses.every(x => x)) {
 //         if ($('select[name="lastCourse"]').val() == 'CSE142') {
-//             showQuestion(event, $(event.target), $('#result-122-from-142'));
+//             showQuestion(event, $(event.target), $('#result-1200-from-142'));
 //         } else {
-//             showQuestion(event, $(event.target), $('#result-122'));
+//             showQuestion(event, $(event.target), $('#result-1200'));
 //         }
 //     } else {
 //         showQuestion(event, $(event.target), null);
@@ -159,6 +159,8 @@ function check1100Problem(event) {
         showQuestion(event, $(event.target), $('#result-1100-topics'));
     } else if (resp == 3) {
         showQuestion(event, $(event.target), $('#result-adv'));
+    } else if ($(event.target).attr('id').startsWith('p_1100p3')) {
+        showQuestion(event, $(event.target), $('#result-1200'));
     } else {
         showNextQuestion(event, $(event.target));
     }
@@ -170,9 +172,9 @@ function check1100Problem(event) {
 
 //     if (resp <= 2) {
 //         if ($('select[name="lastCourse"]').val() == 'CSE142') {
-//             showQuestion(event, $(event.target), $('#result-122-from-142'));
+//             showQuestion(event, $(event.target), $('#result-1200-from-142'));
 //         } else {
-//             showQuestion(event, $(event.target), $('#result-122'));
+//             showQuestion(event, $(event.target), $('#result-1200'));
 //         }
 //     } else if (resp == 3) {
 //         showQuestion(event, $(event.target), $('#result-adv'));
