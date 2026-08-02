@@ -207,15 +207,16 @@ function showQuestion(event, prev, target) {
         $("html, body").animate({ scrollTop: $(document).height()}, "fast", "linear");
 
         if (target.hasClass('result')) {
-	    if (!target.find("#learn-more").length) {
-	    	learn = $('#learn-more').clone();
-	    	learn.appendTo(target);
-	        learn.show();
-	    }
+            if (!target.find("#learn-more").length) {
+                learn = $('#learn-more').clone();
+                learn.appendTo(target);
+                learn.show();
+            }
 
-	    $('#recruit').show();
+            //$('#recruit').show();
 
             $('#result-hidden').text(target.attr('id'));
+            console.log("Hello");
             saveData(event)
         }
     }
@@ -227,12 +228,11 @@ function showNextQuestion(event, prev) {
 
 
 function saveData(e) {
-    //const action = "https://script.google.com/macros/s/AKfycbxRVJ8KIzKBiNzI71b1L3cVv0idoR8lpec0Zpkk-mJJvTw18Nr_rlcB31Hc-2nk07Zyqg/exec"
-
-    // TODO edit this function so that it saves the data to our own thing
+    const action = "https://fling.seas.upenn.edu/~cis110/dynamic/self-assess.php";
 
     e.preventDefault();
-    //const data = new FormData($('#main').get()[0]);
-    //fetch(action, {method: 'POST', body: data,})
+    const data = new FormData($('#main').get()[0]);
+    console.log(data);
+    fetch(action, {method: 'POST', body: new URLSearchParams(data).toString(),})
     
 }
